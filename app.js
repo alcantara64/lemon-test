@@ -3,7 +3,7 @@ const dotenv = require("dotenv");
 const path = require("path");
 dotenv.config({ path: path.join(__dirname, ".env") });
 
-const { MONGO_URI } = process.env;
+const { MONGO_URI, PORT } = process.env;
 
 const packageJson = require("./package.json");
 process.env.VERSION = packageJson.version;
@@ -28,4 +28,8 @@ mongoose
 process.env.instance = "app";
 
 // server setup
-require("./server");
+
+const { server } = require("./server");
+server.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});

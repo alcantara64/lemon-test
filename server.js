@@ -19,5 +19,4 @@ app.use((req, res, next) => express.json({ limit: "50mb" })(req, res, next));
 app.use(bodyParser.text({ limit: "50mb" }));
 app.use(cookieParser());
 
-// listen to connections
-server.listen(PORT);
+module.exports = { server };
